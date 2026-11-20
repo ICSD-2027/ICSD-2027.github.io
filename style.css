@@ -1,176 +1,86 @@
 :root {
   color-scheme: light;
   --conference-blue: #325288;
-  --conference-navy: #192b49;
+  --conference-navy: #192B49;
   --ink: #292929;
   --muted: #656565;
-  --line: #d9dfe5;
 }
-
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
+  font: 1rem/1.55 Arial, Helvetica, sans-serif;
   background: white;
   color: var(--ink);
-  font: 1rem/1.55 Arial, Helvetica, sans-serif;
 }
-a { color: var(--conference-blue); text-underline-offset: .16em; }
-a:hover { color: var(--conference-navy); }
-:focus-visible {
-  outline: 3px solid white;
-  outline-offset: 3px;
-  box-shadow: 0 0 0 7px var(--conference-navy);
-}
-.container { width: min(90%, 78rem); margin-inline: auto; }
-.skip-link {
-  position: absolute;
-  z-index: 5;
-  top: .5rem;
-  left: .5rem;
-  padding: .5rem 1rem;
-  background: white;
-  transform: translateY(-160%);
-}
-.skip-link:focus { transform: none; }
-
-.site-header { background: var(--conference-blue); color: white; }
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: clamp(1.25rem, 3vw, 3rem);
-  padding-block: .6rem;
-}
-.host-logo { display: block; width: min(26vw, 21rem); flex-shrink: 0; }
-.host-logo img { display: block; width: 100%; height: auto; }
-.event { min-width: 0; text-align: right; }
-.event-title {
+.wrap { width: min(90%, 78rem); margin-inline: auto; }
+.skip { position: absolute; top: .5rem; left: .5rem; padding: .5rem 1rem; background: white; color: var(--ink); transform: translateY(-155%); }
+.skip:focus { transform: none; }
+:focus-visible { outline: 3px solid white; outline-offset: 3px; box-shadow: 0 0 0 7px var(--conference-navy); }
+.masthead { background: var(--conference-blue); color: white; }
+.masthead-inner { width: calc(100% - 2rem); display: flex; justify-content: space-between; align-items: center; gap: clamp(1.25rem, 3vw, 3rem); padding-block: .6rem; }
+.host { display: block; width: min(26vw, 21rem); flex-shrink: 0; }
+.host img {
   display: block;
-  color: white;
-  font-size: clamp(1.125rem, 2.2vw, 1.875rem);
-  line-height: 1.2;
-  text-decoration: none;
+  width: 100%;
+  height: auto;
 }
-.event-title:hover { color: white; text-decoration: underline; }
-.event p { margin: .4rem 0 0; }
+.event { min-width: 0; }
+.event-title { display: block; font-size: clamp(1.125rem, 2.2vw, 1.875rem); line-height: 1.2; text-decoration: none; color: white; }
+.event p { margin: .4rem 0 0; text-align: right; }
 .event p span { padding-inline: .35rem; }
-.site-nav { border-top: 1px solid white; }
-.site-nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: .2rem 1.8rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+nav { border-top: 1px solid white; }
+nav ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: .2rem 1.8rem; }
+nav a { display: block; padding: .9rem .1rem .7rem; border-bottom: 3px solid transparent; color: white; text-decoration: none; font-size: .9rem; letter-spacing: .06em; text-transform: uppercase; }
+nav a[aria-current], nav a:hover { color: white; border-bottom-color: white; }
+.layout { flex: 1; padding-block: 2.8rem 3.5rem; }
+.welcome {
+  max-width: 72ch;
+  margin-inline: auto;
+  font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, .95rem + .2vw, 1.125rem);
+  line-height: 1.65;
 }
-.site-nav a {
-  display: block;
-  padding: .9rem .1rem .7rem;
-  border-bottom: 3px solid transparent;
-  color: white;
-  font-size: .85rem;
-  letter-spacing: .04em;
-  text-decoration: none;
-  text-transform: uppercase;
+.welcome p { margin: 0; text-indent: 1.6em; text-align: justify; }
+.welcome p + p { margin-top: 1em; }
+.welcome strong { color: var(--conference-blue); font-weight: 700; }
+.welcome a { color: #000; text-decoration: none; }
+.welcome .date-range { white-space: nowrap; }
+main h1 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 500; line-height: 1.15; margin: 0 0 1.3rem; }
+main section + section { margin-top: 1.7rem; }
+main section h1, main section h2 { margin: 0 0 .35rem; color: var(--conference-blue); font-size: 1.18rem; font-weight: 600; line-height: inherit; }
+.layout > main:not(.welcome) {
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
 }
-.site-nav a[aria-current], .site-nav a:hover { border-bottom-color: white; color: white; }
-.review-strip { border-bottom: 1px solid var(--line); color: var(--muted); font-size: .78rem; }
-.review-strip .container { display: flex; gap: .7rem; padding-block: .45rem; }
-.review-strip strong { color: var(--conference-blue); text-transform: uppercase; white-space: nowrap; }
-
-main { flex: 1; }
-.page-heading, .simple-content { max-width: 72ch; margin-inline: auto; }
-.page-heading { padding-block: 2.8rem 1.5rem; }
-.eyebrow, .section-kicker, .fact-label, .program-number {
-  margin: 0 0 .4rem;
-  color: var(--muted);
-  font-size: .8rem;
-  letter-spacing: .04em;
-  text-transform: uppercase;
+.program p { margin: 0; }
+.program .lecturers-title { margin: 1rem 0 .25rem; font-size: 1rem; }
+.lecturer-list, .roster { margin: 0; padding: 0; list-style: none; }
+.speakers h1 { margin-block-end: 1.5rem; }
+.speakers .lecturer-list li + li { margin-block-start: .625rem; }
+.committees {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  gap: 1.7rem clamp(1.25rem, 2.5vw, 3rem);
+  align-items: start;
 }
-.page-heading h1, .simple-content h1 {
-  margin: 0 0 .6rem;
-  color: var(--conference-blue);
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-  font-weight: 500;
-  line-height: 1.2;
-}
-.lead { margin: 0; color: var(--muted); }
-.simple-content { padding-block: 2.8rem 4rem; font-family: Georgia, 'Times New Roman', serif; line-height: 1.65; }
-.simple-content p { margin: 0 0 1rem; }
-.simple-content h2 { margin: 2rem 0 .7rem; color: var(--conference-blue); font: 600 1.1rem/1.4 Arial, sans-serif; }
-.simple-content strong { color: var(--conference-blue); }
-.home-links { columns: 2; margin: 0; padding-left: 1.25rem; font-family: Arial, sans-serif; font-size: .94rem; }
-.home-links li { margin-bottom: .45rem; break-inside: avoid; }
-
-.section-block, .reading-layout { max-width: 72ch; padding-bottom: 4rem; }
-.top-tight { padding-top: 0; }
-.section-head { margin-bottom: 1.25rem; }
-.section-head h2, .reading-main h2, .side-note strong,
-.person-card h3, .program-panel h2, .info-card h2, .committee-panel h2,
-.timeline-row h2 {
-  margin: 0 0 .35rem;
-  color: var(--conference-blue);
-  font-size: 1.15rem;
-  font-weight: 600;
-  line-height: 1.4;
-}
-.section-head p, .reading-main p, .side-note p,
-.person-card p, .program-panel p, .info-card p, .timeline-row p { margin: 0 0 1rem; }
-.reading-main h2:not(:first-child) { margin-top: 1.7rem; }
-.side-note { margin-top: 1.5rem; padding: 1rem 1.25rem; border-left: 3px solid var(--conference-blue); background: #f6f8fa; }
-.side-note strong { display: block; }
-.side-note p { color: var(--muted); }
-.inline-pending { color: #89521c; font-weight: 600; }
-.subtle-note { color: var(--muted); font-size: .9rem; }
-.first-note { margin: 0 0 1.2rem; }
-
-.timeline-row { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--line); }
-.timeline-date { color: var(--conference-blue); font-weight: 600; }
-.timeline-row p { color: var(--muted); }
-.status { grid-column: 2; justify-self: start; color: #89521c; font-size: .8rem; }
-.status-draft { color: var(--muted); }
-.person-grid, .program-grid, .info-grid, .committee-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 2rem; }
-.person-card, .program-panel, .info-card, .committee-panel { padding: 0; }
-.person-card p, .program-panel p, .info-card p { color: var(--muted); }
-.info-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.committee-panel ul { margin: 0; padding: 0; list-style: none; }
-.committee-panel li { margin: 0 0 .35rem; font-size: .9rem; }
-.committee-panel li small { display: block; color: var(--muted); font-size: .82rem; font-style: italic; }
-.committee-panel li em { color: var(--conference-blue); font-size: .8rem; font-style: normal; }
-.program-number { display: block; }
-
-.site-footer { background: var(--conference-navy); color: white; font-size: .85rem; }
-.footer-inner { display: flex; justify-content: space-between; gap: 1rem; padding-block: 1rem; }
-.footer-brand, .footer-links a { color: white; text-decoration: none; }
-.footer-brand { font-weight: 700; }
-.footer-inner p { margin: .2rem 0 0; }
-.footer-links { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
-
+.committees > section { margin: 0; }
+.roster { font-size: .875rem; }
+.roster li + li { margin-top: .28rem; }
+.lecturer-list i, .roster .affiliation { font-size: .8rem; font-style: italic; line-height: 1.35; color: var(--muted); }
+.roster .role { white-space: nowrap; }
+footer { background: var(--conference-navy); color: white; padding: .95rem 1rem; font-size: .9rem; }
 @media (max-width: 45rem) {
-  .header-inner { flex-direction: column; align-items: stretch; gap: .75rem; padding-block: 1rem; }
-  .host-logo { width: min(75%, 17rem); }
-  .event { align-self: flex-end; }
-  .event-title { font-size: clamp(1rem, 4vw, 1.4rem); }
-  .site-nav ul { gap: .1rem 1rem; }
-  .site-nav a { padding: .65rem 0 .45rem; font-size: .78rem; }
-  .review-strip .container { display: block; }
-  .review-strip strong { margin-right: .5rem; }
-  .page-heading, .simple-content { padding-block: 2rem 1.3rem; }
-  .simple-content { padding-bottom: 3rem; }
-  .home-links { columns: 1; }
-  .timeline-row, .person-grid, .program-grid, .info-grid, .committee-grid { grid-template-columns: 1fr; }
-  .timeline-row { gap: .2rem; }
-  .status { grid-column: 1; }
-  .footer-inner { display: block; }
-  .footer-links { margin-top: .8rem; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  .masthead-inner { flex-direction: column; gap: .75rem; padding-block: 1rem; }
+  .host { width: min(75%, 17rem); align-self: flex-start; }
+  .event { max-width: 100%; align-self: flex-end; }
+  .event-title { font-size: clamp(.8125rem, 4vw, 1.4rem); }
+  nav ul { column-gap: 1rem; }
+  nav a { padding: .65rem 0 .45rem; }
+  .layout { padding-block: 2rem; }
+  .committees { grid-template-columns: 1fr; }
 }
