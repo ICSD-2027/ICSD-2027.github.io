@@ -15,9 +15,9 @@ The original local files supplied the conference title, Beijing, 19–25 June 20
 
 ## Publish with GitHub Pages
 
-1. Confirm the GitHub repository that should hold the site. This directory currently has no Git remote.
-2. Add these files to that repository without discarding any existing repository content. Keep `index.html` at the repository root.
-3. In the repository settings, open **Pages**, select **Deploy from a branch**, then choose the publishing branch and `/ (root)`.
+1. The local `origin` remote points to `https://github.com/ICSD-2027/ICSD-2027.github.io.git`. The GitHub repository has not been confirmed or created through this workspace. No files have been pushed.
+2. Once the repository exists and the conference details are approved, push the local `main` branch. Keep `index.html` at the repository root.
+3. In the repository settings, open **Pages**, select **Deploy from a branch**, then choose `main` and `/ (root)`.
 4. Give collaborators repository access in the organization with a suitable role. They can update page files through pull requests and review changes before merging.
 
 Do not publish until the draft details and placeholders have been reviewed.
