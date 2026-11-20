@@ -21,14 +21,14 @@ body {
 .skip:focus { transform: none; }
 :focus-visible { outline: 3px solid white; outline-offset: 3px; box-shadow: 0 0 0 7px var(--conference-navy); }
 .masthead { background: var(--conference-blue); color: white; }
-.masthead-inner { width: calc(100% - 2rem); display: flex; justify-content: space-between; align-items: center; gap: clamp(1.25rem, 3vw, 3rem); padding-block: .6rem; }
+.masthead-inner { width: min(90%, 72rem); display: flex; justify-content: space-between; align-items: center; gap: clamp(1.25rem, 3vw, 3rem); padding-block: .6rem; }
 .host { display: block; width: min(26vw, 21rem); flex-shrink: 0; }
 .host img {
   display: block;
   width: 100%;
   height: auto;
 }
-.event { min-width: 0; }
+.event { min-width: 0; text-align: right; }
 .event-title { display: block; font-size: clamp(1.125rem, 2.2vw, 1.875rem); line-height: 1.2; text-decoration: none; color: white; }
 .event p { margin: .4rem 0 0; text-align: right; }
 .event p span { padding-inline: .35rem; }
